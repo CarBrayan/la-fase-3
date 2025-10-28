@@ -1,0 +1,431 @@
+/* ===================================
+   EduMeal - Sistema de Gestión Escolar
+   Archivo: styles.css
+   =================================== */
+
+/* Variables CSS */
+:root {
+    --primary-green: #2d7a4f;
+    --secondary-green: #38a169;
+    --light-green: #e6f4ea;
+    --dark-green: #1e5631;
+    --accent-green: #48bb78;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+    --transition: all 0.3s ease;
+}
+
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+/* Overlay con imagen de fondo */
+.overlay {
+    background-image: url('https://images.unsplash.com/photo-1603046891652-7aa8a1e92dcd?auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+
+.overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(230,244,234,0.9) 100%);
+    z-index: -1;
+}
+
+/* ===================================
+   NAVEGACIÓN
+   =================================== */
+
+nav {
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+nav:hover {
+    box-shadow: 0 4px 12px rgba(45, 122, 79, 0.3);
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.nav-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: white;
+    color: var(--primary-green);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+}
+
+.nav-link-btn:hover {
+    background-color: var(--light-green);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Menú móvil */
+.mobile-nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.mobile-nav-link:hover {
+    background-color: rgba(255,255,255,0.25);
+    transform: translateX(5px);
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+
+.hero-section {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(230,244,234,0.8) 100%);
+    backdrop-filter: blur(5px);
+}
+
+.hero-section h1 {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.animate-slide {
+    animation: slide 1.2s ease-out;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(45, 122, 79, 0.3);
+    border-color: white;
+}
+
+/* ===================================
+   FEATURE CARDS
+   =================================== */
+
+.feature-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-green), var(--accent-green));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--light-green);
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.feature-card:hover .card-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.feature-item {
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
+    color: var(--text-light);
+    font-weight: 500;
+    border-left: 3px solid var(--light-green);
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    border-left-color: var(--accent-green);
+    padding-left: 1rem;
+    color: var(--primary-green);
+}
+
+.card-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-green);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-button:hover {
+    background-color: var(--secondary-green);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===================================
+   ESTADÍSTICAS
+   =================================== */
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-green);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-green);
+    margin: 0.5rem 0;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+footer {
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--accent-green) 0%, 
+        var(--primary-green) 50%, 
+        var(--accent-green) 100%);
+}
+
+/* ===================================
+   UTILIDADES
+   =================================== */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading state */
+body:not(.loaded) {
+    opacity: 0;
+}
+
+body.loaded {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .card-icon {
+        font-size: 3rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+    
+    .feature-card {
+        padding: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+}
+
+/* ===================================
+   ACCESIBILIDAD
+   =================================== */
+
+/* Focus visible para navegación con teclado */
+*:focus-visible {
+    outline: 3px solid var(--accent-green);
+    outline-offset: 2px;
+}
+
+/* Reducir movimiento para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+    .feature-card {
+        border: 2px solid var(--dark-green);
+    }
+    
+    .nav-link:hover {
+        background-color: var(--dark-green);
+    }
+}
